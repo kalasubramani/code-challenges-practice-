@@ -16,7 +16,7 @@ var merge = function(nums1, m, nums2, n) {
   nums1.splice(0);
   
   //populate nums1 with sorted result
-  for(var i=0;i<nums2.length;i++){        
+  for(const i in nums2){        
       if(nums2[i]>0){           
           nums1.push(nums2[i]);
       }
