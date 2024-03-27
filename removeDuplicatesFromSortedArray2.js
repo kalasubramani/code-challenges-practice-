@@ -2,6 +2,7 @@
  * @param {number[]} nums
  * @return {number}
  */
+//can have a value upto 2 times
 var removeDuplicates = function(nums) {
 
   console.log(nums);
