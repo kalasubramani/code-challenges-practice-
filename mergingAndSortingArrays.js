@@ -6,22 +6,14 @@
  * @param {number} n
  * @return {void} Do not return anything, modify nums1 in-place instead.
  */
-var merge = function(nums1, m, nums2, n) {
-  //merge both arrays in num2
-  var nums2 = nums1.concat(nums2);
-
-  //sort
-  nums2.sort((a,b)=>{return a-b})    
-  //clear out nums1 to hold final result
-  nums1.splice(0);
-  
-  //populate nums1 with sorted result
-  for(const i in nums2){        
-      if(nums2[i]>0){           
-          nums1.push(nums2[i]);
-      }
+var merge = function (nums1, m, nums2, n) {
+  //populate nums1 with num2 values 
+  for (var i = 0; i < n; i++) {
+      nums1[m + i] = nums2[i];        
   }
-  console.log("removed zeros  "+nums1);
+  //sort the elements in num1
+  nums1.sort((a, b) => { return a - b });
+  // console.log("merged and sorted  " + nums1);
 };
 
 // You are given two integer arrays nums1 and nums2, sorted in non-decreasing order, and two integers m and n, representing the number of elements in nums1 and nums2 respectively.
