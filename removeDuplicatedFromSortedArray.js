@@ -3,19 +3,15 @@
  * @param {number[]} nums
  * @return {number}
  */
-var removeDuplicates = function(nums) {
-  console.log("nums "+nums);
-
- for(var index=0;index<nums.length;index++){
-     for(var x=1;x<nums.length-1;x++){
-         if(nums[index]===nums[x]){
-             nums.splice(index,1);
-             console.log("removed "+nums);
-         }
-     }//for
- }
-
-console.log("result "+nums);    
+var removeDuplicates = function (nums) {
+  for (var index = 0; index < nums.length; index++) {
+      for (var x = index + 1; x <= nums.length - 1; x++) {
+          if (nums[index] === nums[x]) {
+              nums.splice(index, 1);
+              x--; //bring back the index by 1 as the current ele is removed
+          }
+      }//for
+  }
 };
 
 // Given an integer array nums sorted in non-decreasing order, remove the duplicates in-place such that each unique element appears only once. The relative order of the elements should be kept the same. Then return the number of unique elements in nums.
