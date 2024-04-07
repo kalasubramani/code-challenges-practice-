@@ -3,33 +3,25 @@
  * @param {number[]} nums
  * @return {number}
  */
-var majorityElement = function(nums) {
-  var count =1,refArray=[],maxOccurence,maxCount=0;
+var majorityElement = function (nums) {
+  var count = 1, refArray = [], maxOccurence, maxCount = 0;
  
-     for(var index=0;index<nums.length;index++){
-         count =1;
-         for(var x=index+1;x<nums.length;x++){
-             // console.log("comparing "+nums[index]+nums[x]);
- 
-            if(nums[index]===nums[x]){
-             count++;
-            }
-            if(count>nums.length/2){
-                 maxOccurence=nums[index];
-                 // console.log("maxOccurence "+maxOccurence);
-            }
-         }//for
-         if(count>maxCount){
-             maxCount = count;
-             maxOccurence = nums[index];
-             // console.log("REsult -- maxOccurence "+maxOccurence +"maxCount "+maxCount);
-         }
-     }//for
- 
- console.log("maxOccurence "+maxOccurence);
-     return maxOccurence;
-     
-     
+  for (var index = 0; index < nums.length; index++) {
+      count = 1;//reset count
+      for (var x = index + 1; x < nums.length; x++) 
+      {           
+          if (nums[index] === nums[x]) {
+              count++;
+          }
+
+      }//for
+      if (count > maxCount) {//set new value as maxocc
+          maxCount = count;
+          maxOccurence = nums[index];            
+      }
+  }//for
+  return maxOccurence;
+
  };
 
 // Given an array nums of size n, return the majority element.

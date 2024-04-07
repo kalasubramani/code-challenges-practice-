@@ -10,7 +10,7 @@ var removeDuplicates = function(nums) {
 
   for(var index=0;index<nums.length;index++){
         count=1;
-      for(var x=index+1;x<nums.length-1;x++){
+      for(var x=index+1;x<=nums.length-1;x++){
           //if i and i+1 are same, add count
          
           if(nums[index]===nums[x]){
