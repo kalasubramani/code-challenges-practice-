@@ -1,5 +1,8 @@
 
 //get the first longest sub linkedlist where consecutive digits are in non-increasing order
+//A wants to locate new servers to the requested client. The servers have a vulnerability index associated with each of them.
+//find three consecutive servers with non-increasing vunlerability index and return the set of servers that has the lowest vulnerability index among them
+//if there are multiple set of servers that has the lowest vulnerability index, return the first occuring set of servers
 class llNode {
   constructor(val) {
     this.val = val;
