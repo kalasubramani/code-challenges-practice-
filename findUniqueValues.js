@@ -30,4 +30,5 @@ function findUniqueValues(arr){
   return counter;
 }
 
+console.log(findUniqueValues([]));
 console.log(findUniqueValues([-2,-3,0,4,5,2,4,3,2,-2,4]));
