@@ -20,9 +20,9 @@ function sameFrequency(num1,num2){ //3 * o(n) = o(n)
 //compare the objs of num1 and num2 for freq
 //return true/false
 
-let result=false,num1Length=num1.toString().length, num1Digits={},num2Digits={};
+let result=false,num1Digits={},num2Digits={};
 
-if(!(num1 && num2) || !(num1Length === num2.toString().length) ){
+if(!(num1 && num2) || !(num1?.toString().length === num2?.toString().length) ){
   return false;
 }
 
@@ -61,6 +61,7 @@ function getDigits(num){
   return numDigits;
 }
 
-// console.log(sameFrequency());
-// console.log(sameFrequency(23,1));
+console.log(sameFrequency());
+console.log(sameFrequency(23,1));
 console.log(sameFrequency(244,424));
+console.log(sameFrequency(244789,424788));
