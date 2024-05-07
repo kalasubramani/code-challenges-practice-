@@ -18,6 +18,7 @@
 function areThereDuplicates(arr){
 
   //two pointers method
+  //sort the input
   //set i =0, j = arr.length-1
   //compare values at i and j
   //if values matches -> return false
@@ -25,6 +26,7 @@ function areThereDuplicates(arr){
   //return true if there are no duplicates
 
   let left =0, right = arr.length-1;
+  arr.sort();
   while(left<right){ //o(n)
     if(arr[left]===arr[right]){
       return true;
