@@ -21,3 +21,5 @@ function maxSumOfSubArray(arr,k){
 }
 
 console.log(maxSumOfSubArray([-2,-3,0,4,5,2,4,3,2,-2,4],3));
+console.log(maxSumOfSubArray([1,4,2,10,23,3,1,0,20], 4));
+console.log(maxSumOfSubArray([3,-2,7,-4,1,-1,4,-2,1],2));

@@ -23,6 +23,9 @@ function isSubsequence(str1,str2){
 //else j++ 
 
 let i=0,j=0;
+if(!str1) return true;
+if(!str2) return false;
+
 //'abc', 'abracadabra'
 while(j<str2.length && i <=str1.length){
   if(str1[i]===str2[j]){
