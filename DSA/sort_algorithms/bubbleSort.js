@@ -2,6 +2,8 @@
 // write a sorting fn that takes an array of integers and sorts it
 //time complexity n ^2
  //nearly sorted input => linear time o(n)
+
+ //** downside - has many swaps in one iteration, writes a lot to the memory */
 function bubbleSort(arr){ 
   //start looping from last ele to first - i
   //start inner loop j from 0 to i-1 
