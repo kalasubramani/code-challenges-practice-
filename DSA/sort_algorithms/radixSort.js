@@ -8,12 +8,36 @@
     // at the end of iteration, replace the original with buckets arrays in the same order that was created
 
 function radixSort(arr){
-  let iterations =  digitCount(arr);
-  console.log( digitCount(arr));
-
+  let iterations =  maxDigits(arr);
+   
+  for(let i =0;i<iterations;i++){
+    //create k empty buckets
+    let digitBuckets = Array.from({length:10},()=>[]);
+      arr.forEach(ele => {          
+      let digit = getDigit(ele,i); 
+      //push ele to corr. array      
+      digitBuckets[digit].push(ele);
+      // console.log(digitBuckets);
+    });
+    arr=[].concat(...digitBuckets);
+  }
+  return arr;
 }
-console.log(radixSort([345, 456454, 234324324, 4565454]))
+console.log(radixSort([345, 45645, 23432, 4565]))
 
-function digitCount(num){
+function maxDigits(arr) {
+  let maxLength = 0;
+  arr.forEach(e => {
+    let length = digitCount(e);
+    maxLength = Math.max(length, maxLength);
+  });
+  return maxLength;
+}
+
+function digitCount(num) {
   return num.toString().length;
+}
+
+function getDigit(num,pos){
+  return Math.floor(Math.abs(num)/Math.pow(10,pos))%10;//math.abs handles negative numbers
 }
