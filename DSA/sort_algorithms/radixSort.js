@@ -7,7 +7,7 @@
     // based on i, place the num in corr. buckets
     // at the end of iteration, replace the original with buckets arrays in the same order that was created
 
-function radixSort(arr){
+function radixSort(arr){ //O(n) -> O(n*k) n - no. of inputs, k - length of the longest input
   let iterations =  maxDigits(arr);
    
   for(let i =0;i<iterations;i++){
