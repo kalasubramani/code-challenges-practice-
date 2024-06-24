@@ -39,9 +39,35 @@ class singly_linked_list{
    this.length +=1;   
    return this;
   }
+
+  //remove node from end of the list
+  pop(){
+    // get next node of the linked list and store it in temp
+    // go on until the tail is reached
+    // once the tail is reached, set the temp node to this.tail 
+    // reduce length by one
+    // return old tail
+    var temp = this.head;
+    var prev = this.head;
+    console.log("head",temp);
+
+    while(temp.next){
+      prev=temp;
+      temp = temp.next;       
+    }
+    console.log("prev",prev);    
+    console.log("last",temp);    
+
+    //set prev to tail
+    this.tail=prev;
+    this.tail.next = null;
+    this.length -=1;
+  }
 }
 
 let list= new singly_linked_list();
 list.push("1");
 list.push("3");
+list.push("5");
+list.pop();
 console.log(list);
