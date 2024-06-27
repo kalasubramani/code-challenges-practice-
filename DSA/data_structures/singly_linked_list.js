@@ -51,6 +51,17 @@ class singly_linked_list{
     var prev = this.head;
     console.log("head",temp);
 
+    //if there are no nodes
+    if(this.length===0) return undefined;
+    //if there's only one node
+    if(this.length===1){
+      let lastNode = this.head;
+      this.head=null;
+      this.tail=null;
+      this.length -=1;
+      return lastNode;
+    }
+    //traverse each node and store data in prev
     while(temp.next){
       prev=temp;
       temp = temp.next;       
@@ -62,12 +73,38 @@ class singly_linked_list{
     this.tail=prev;
     this.tail.next = null;
     this.length -=1;
+    return temp;
   }
+
+  //removes node from the beginning of the list
+shift(){
+  //if length =0, return undefined
+  //if length=1, return head and set head and tail as null, length =0
+  //take head and store it in temp
+  //get head.next and set it as new head
+  //reduce length by 1
+  //return temp
+  if(this.length===0) return undefined;
+  let temp = this. head;
+  if(this.length===1){   
+    this.head=null;
+    this.tail=null;
+    this.length-=1;
+    return temp;
+  }
+  this.head=temp.next;
+  this.length--;
+  return temp;
+}
 }
 
 let list= new singly_linked_list();
 list.push("1");
 list.push("3");
 list.push("5");
-list.pop();
+// console.log("popped node 1",list.pop());
+// console.log("popped node 2",list.pop());
+// console.log("popped node 3",list.pop());
+// console.log("popped node lasttry",list.pop());
+console.log("shifted node ",list.shift());
 console.log(list);
