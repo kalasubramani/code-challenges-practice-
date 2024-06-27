@@ -96,6 +96,31 @@ shift(){
   this.length--;
   return temp;
 }
+
+//insert a node to the beginning of the list
+unshift(val){
+  //create a new node using the val
+  //if length=0, set new node as head and tail,
+      //increment length by 1 
+  //if length=1, set new node as head and existing node as tail, 
+    //increment length by 1
+  //take the current head, store in temp
+  //set new node as head
+  //set new node.next to temp
+  //increment the length by 1
+  // return the list
+
+  let newNode = new Node(val);
+  if(this.length===0){
+    this.head=newNode;
+    this.tail=newNode;   
+  } 
+    newNode.next = this.head;
+    this.head=newNode;
+  
+  this.length +=1;
+  return this;
+}
 }
 
 let list= new singly_linked_list();
@@ -107,4 +132,5 @@ list.push("5");
 // console.log("popped node 3",list.pop());
 // console.log("popped node lasttry",list.pop());
 console.log("shifted node ",list.shift());
+console.log("unshifted node ", list.unshift("7"));
 console.log(list);
