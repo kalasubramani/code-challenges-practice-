@@ -119,7 +119,7 @@ class doubly_linked_list {
     return this;
   }
   //get the value of the nth node
-  get(index){
+  get(index) {
     //if index <0 or >= length, return undefined
     // if index =0, return this.head
     // if index = length, return tail
@@ -127,25 +127,23 @@ class doubly_linked_list {
     //else start iterating from tail
     //if the n = index, return the node
 
-    if(index <0 || index>=this.length) return undefined;
-    if(index ===0) return this.head;
-    if(index===this.length) return this.tail;
-    let midpoint = Math.floor(this.length/2);
-    let n=0, current =null;
-    console.log("midpoint",midpoint)
-    if(index<=midpoint){
-      current=this.head;
-      while(current && n<midpoint){
-        if(n===index) return current;
+    if (index < 0 || index >= this.length) return undefined;
+    if (index === 0) return this.head;
+    if (index === this.length) return this.tail;
+    let midpoint = Math.floor(this.length / 2);
+    let n = 0, current = null;
+    if (index <= midpoint) {
+      current = this.head;
+      while (current && n < midpoint) {
+        if (n === index) return current;
         n++;
-        current=current.next;
+        current = current.next;
       }
-    }else{
-      console.log("ss")
-      current = this.end;
-      n= this.length-1;
-      while(current && n>midpoint){
-        if(n===index) return current;
+    } else {
+      current = this.tail;
+      n = this.length - 1;
+      while (current && n > midpoint) {
+        if (n === index) return current;
         n--;
         current = current.previous;
       }
@@ -155,12 +153,12 @@ class doubly_linked_list {
 }
 
 let list = new doubly_linked_list();
-console.log(list.push(10));
-console.log(list.push(11));
-console.log(list.push(12));
-console.log(list.push(13));
-console.log(list.push(14));
-console.log(list.push(15));
+list.push(10);
+list.push(11);
+list.push(12);
+list.push(13);
+list.push(14);
+list.push(15);
 // console.log(list);
 // console.log(list.pop());
 // console.log(list);
@@ -168,5 +166,5 @@ console.log(list.push(15));
 // console.log(list);
 // console.log(list.unshift("first"));
 // console.log(list);
-console.log(list.get("14"));
+console.log(list.get(4));
 
