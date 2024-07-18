@@ -134,7 +134,7 @@ class doubly_linked_list {
     let n = 0, current = null;
     if (index <= midpoint) {
       current = this.head;
-      while (current && n < midpoint) {
+      while (n < midpoint) {
         if (n === index) return current;
         n++;
         current = current.next;
@@ -142,14 +142,101 @@ class doubly_linked_list {
     } else {
       current = this.tail;
       n = this.length - 1;
-      while (current && n > midpoint) {
+      while (n > midpoint) {
         if (n === index) return current;
         n--;
         current = current.previous;
       }
     }
-    return current;
   }
+  //update a value for a node at given index
+  set(index, val) {
+    //if index <0 or >= length return false -- already handled in get()
+    //use get(index) to get the target node
+    // if target node is returned
+    //update the value of the targer node
+    //return true
+    //else 
+    //return false -- node dose not exist
+    let targetNode = this.get(index);
+    if (targetNode) {
+      targetNode.value = val;
+      return true;
+    } else return false;
+  }
+  // insert a new node with a given value at a given index into a doubly linked list
+  insert(index, val) {
+    //if index <0 or > length return false     
+    //if index =0, use unshift() to insert new node
+    //else if index = length, use push() to insert new node
+    //else 
+      //create a new node using the given val
+      //use get(index-1) to get the target node
+      //get target.previous and set it to new node.previous
+      //set target.previous to new node
+      //set new node.next to targer node
+      //set node before newNode to point to newNode
+      // increment length by 1
+      // return true
+    if (index < 0 || index > this.length) return false;
+    if (index === 0) return !!this.unshift(val);
+    else if (index === this.length) return !!this.push(val);
+    else {
+      let newNode = new Node(val);
+      
+      let targetNode = this.get(index);// first new(second) ten
+      newNode.previous = targetNode.previous;
+      targetNode.previous = newNode;
+      newNode.next = targetNode;
+      newNode.previous.next = newNode; //newNode.previous - node before newNode
+      console.log("new node",newNode)
+      this.length++;
+      return true;
+    }
+   
+  }
+  //remove a node at given index
+  remove(index){
+    //if index <0 or > length-1 return false     
+    //if index =0, use shift() to remove node
+    //else if index = length-1, use pop() to remove node
+    //else 
+    //use get(index) to get target node
+    //get nodeBefore = target.previous
+    //get nodeAfter = target.next
+    //set nodeBefore.next to nodeAfter
+    //set nodeAfter.previous to nodeBefore
+    //clear connections on target node
+    //decrement length by 1
+    //return targetNode
+
+    if(index<0 || index>this.length-1) return false;
+    if(index===0) return this.shift();
+    else if(index===this.length-1) return this.pop();
+    else {
+      let targetNode = this.get(index);
+      let nodeBefore = targetNode.previous;
+      let nodeAfter = targetNode.next;
+      nodeBefore.next = nodeAfter;
+      nodeAfter.previous = nodeBefore;
+      targetNode.previous=null;
+      targetNode.next = null;
+
+      this.length--;
+      return targetNode;
+    }
+
+  }
+    //test method
+    //prints all values in the list in order
+    print(){
+      let current = this.head;
+      while(current){
+        console.log(current.value);
+        current = current.next;
+      }
+      return this.length;
+    }
 }
 
 let list = new doubly_linked_list();
@@ -166,5 +253,18 @@ list.push(15);
 // console.log(list);
 // console.log(list.unshift("first"));
 // console.log(list);
-console.log(list.get(4));
+console.log(list.get(-1));
+console.log(list.get(11));
+console.log(list.get(2));
+console.log(list.set(0, "ten"));
+console.log(list.print());
+console.log(list.insert(0,"first"));
+console.log(list.insert(1,"second"));
+console.log(list.print());
+// console.log(list.insert(100,"first"));
+// console.log(list);
+// console.log(list.remove(0));
+console.log(list.remove(1));
+console.log(list.print());
+
 

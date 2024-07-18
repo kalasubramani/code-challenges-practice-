@@ -205,6 +205,7 @@ class singly_linked_list {
     return removed;
   }
 
+  //test method
   //prints all values in the list in order
   print(){
     let current = this.head;
