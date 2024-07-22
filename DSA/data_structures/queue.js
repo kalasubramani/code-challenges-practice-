@@ -38,6 +38,9 @@ class Queue{
     //decrement size by 1
     // return targetnode
     if(this.size===0) return false;
+    if(this.size===1){
+      this.last=null;
+    }
     let targetNode = this.first;
     this.first= targetNode.next;
     this.size--;
