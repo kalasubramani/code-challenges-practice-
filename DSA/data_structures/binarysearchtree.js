@@ -1,22 +1,66 @@
 
-class Node{
-  constructor(value){
-    this.value=value;
-    this.right=null;
-    this.left=null;
+class Node {
+  constructor(value) {
+    this.value = value;
+    this.right = null;
+    this.left = null;
   }
 }
 
-class binarysearchtree{
- constructor(){
-  this.root=null;
- }
+class binarysearchtree {
+  constructor() {
+    this.root = null;
+  }
+  //insert a new node to a bst
+  insert(value) {
+    //create new node with provided value
+    //check if root exists
+    // else - make new node as root, return Tree
+    //check if value > root   
+    //while value > root       
+    //let new root = root.right
+    // if there is no root.right
+    //  set root.right = new node
+    // else if root < value
+    //set root.left = new node
+    //else
+    // while value < root
+    // let new root = root.left
+    //if there is no root.left
+    //set new node as root.left
+    //else if value > root
+    //set root.right = new node
+
+    let newNode = new Node(value);
+    if (!this.root) {
+      this.root = newNode;
+      return this;
+    }
+    let rootNode = this.root;
+    while (true) {
+      //handle duplicates
+      if(value === rootNode.value) return undefined;
+
+      if (value > rootNode.value) {
+        if (!rootNode.right){
+          rootNode.right = newNode;
+          return this;
+        }
+        rootNode = rootNode.right;
+      } else {
+        if (!rootNode.left){
+          rootNode.left = newNode;
+          return this;
+        }
+        rootNode = rootNode.left;
+      }
+    }
+  }
 }
 
-let bst= new binarysearchtree();
+let bst = new binarysearchtree();
 bst.root = new Node(10);
 bst.root.left = new Node(8);
 bst.root.right = new Node(15);
-bst.root.left = new Node(9);
-
+bst.insert(9);
 console.log(bst);
