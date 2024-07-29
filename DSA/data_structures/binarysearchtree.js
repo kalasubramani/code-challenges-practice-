@@ -56,6 +56,42 @@ class binarysearchtree {
       }
     }
   }
+
+  //find if a value exists in given tree
+  find(value){
+    //if there is no root, return false
+    
+    //while true   
+      //check if root == value then return root
+       //check if value > root                   
+           //let new root = root.right
+           // if root.right ==value
+                //  return root.right
+             //set root = root.right
+         //else
+           //set root as root.left
+           //else if value > root
+    //set root.right = new node
+
+    if(!this.root)  return undefined;
+    if(this.root.value=value) return true;//return this.root;
+
+    let rootNode = this.root,hasValue=false;
+    while(rootNode && !hasValue){
+      if(value > rootNode.value){        
+        if(!rootNode.right) return hasValue;
+        else if(rootNode.right.value===value) return !hasValue;// rootNode.right;
+        rootNode=rootNode.right;        
+      }else{
+        if(!rootNode.left) return hasValue;
+        else if(rootNode.left.value===value) return !hasValue;//rootNode.left;
+        rootNode=rootNode.left;
+      }
+      return found;
+    }
+    
+
+  }
 }
 
 let bst = new binarysearchtree();
@@ -63,4 +99,6 @@ bst.root = new Node(10);
 bst.root.left = new Node(8);
 bst.root.right = new Node(15);
 bst.insert(9);
-console.log(bst);
+// console.log(bst);
+console.log(bst.find(8));
+console.log(bst.find(99));
