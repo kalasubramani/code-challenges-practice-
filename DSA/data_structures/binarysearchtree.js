@@ -90,14 +90,131 @@ class binarysearchtree {
     }
     return hasValue;
   }
+
+  //do a breadth first search of the tree and print out the nodes visited
+  BreadthFirstSearch(){
+    //use a Queue to hold the list of next nodes to be traversed
+    //use an array to hold the order of the nodes to be printed
+    //get the root node and add to Q
+    //loop as long as Q has nodes
+        //add dequeue from Q and add to printlist
+        //does node.left exists, then add it to Q
+        //does node.right exists, then add it to Q
+        
+    //return printlist
+    
+    let q =[], printList=[],node=this.root;
+
+    q.push(node);
+    while(q.length){
+         node = q.shift();
+        printList.push(node.value);
+        if(node.left) q.push(node.left);
+        if(node.right) q.push(node.right);
+    }
+    return printList;
+  }
+
+   //traverse the tree vertically and print the order in which nodes are visited
+  //Preorder - visit left node, root and then the right node
+  DepthFirstSearch_PreOrder(){
+    //if there is no root, return undefined
+    //create a variable printList to store the order of nodes that are visited
+    //store root as current
+    //pass current to a recursive fn - traverse()
+    //return printlist
+
+    //traverse(node) - traverses the given node in preorder search
+        //add node to printlist
+        //if node.left exist, traverse(node.left)
+        //if node.right exist, traverse(node.right)
+
+    if(!this.root) return undefined;
+
+    let printList=[], current = this.root;
+
+    function traverse(current){
+      if(current) printList.push(current.value);
+      if(current.left) traverse(current.left);
+      if(current.right) traverse(current.right);   
+  }
+    traverse(current);
+    return printList;
+    
+  }
+ 
+  //traverse the tree vertically and print the order in which nodes are visited
+  //Postorder - visit left node, right node and then root
+  DepthFirstSearch_PostOrder(){
+    //if there is no root, return undefined
+    //create a variable printList to store the order of nodes that are visited
+    //store root as current
+    //pass current to a recursive fn - traverse()
+    //return printlist
+
+    //traverse(node) - traverses the given node in postorder search       
+        //if node.left exist, traverse(node.left)
+        //if node.right exist, traverse(node.right)
+         //add node to printlist
+
+    if(!this.root) return undefined;
+
+    let printList=[], current = this.root;
+
+    function traverse(current){      
+      if(current.left) traverse(current.left);
+      if(current.right) traverse(current.right);   
+      if(current) printList.push(current.value);
+  }
+    traverse(current);
+    return printList;
+    
+  }
+
+  //traverse the tree vertically and print the order in which nodes are visited
+  //Inorder - visit left node, root and then right node
+  DepthFirstSearch_InOrder(){
+    //if there is no root, return undefined
+    //create a variable printList to store the order of nodes that are visited
+    //store root as current
+    //pass current to a recursive fn - traverse()
+    //return printlist
+
+    //traverse(node) - traverses the given node in postorder search       
+        //if node.left exist, traverse(node.left)
+        //add node to printlist
+        //if node.right exist, traverse(node.right)
+         
+
+    if(!this.root) return undefined;
+
+    let printList=[], current = this.root;
+
+    function traverse(current){      
+      if(current.left) traverse(current.left);
+      if(current) printList.push(current.value);
+      if(current.right) traverse(current.right);       
+  }
+    traverse(current);
+    return printList;
+    
+  }
 }
 
 let bst = new binarysearchtree();
-bst.root = new Node(10);
-bst.root.left = new Node(8);
-bst.root.right = new Node(15);
-bst.insert(9);
+bst.insert(10);
+bst.insert(15);
+bst.insert(6);
+bst.insert(8);
+bst.insert(20);
+bst.insert(3);
+
+
 console.log(bst);
 //  console.log(bst.find(10));
 console.log(bst.find(99));
 console.log(bst.find(15));
+console.log("BreadthFirstSearch: ",bst.BreadthFirstSearch());
+console.log("DepthFirstSearch_PreOrder: ",bst.DepthFirstSearch_PreOrder());
+console.log("DepthFirstSearch_PostOrder: ",bst.DepthFirstSearch_PostOrder());
+console.log("DepthFirstSearch_InOrder: ",bst.DepthFirstSearch_InOrder());

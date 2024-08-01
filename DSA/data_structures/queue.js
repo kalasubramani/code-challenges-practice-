@@ -24,8 +24,9 @@ class Queue{
       this.first=newNode;
       this.last=newNode;      
     }else{
+      console.log("lastnode",this.last);
       this.last.next = newNode;
-      this.last=this.newNode;
+      this.last=newNode;
     }
     this.size++;
     return this;
@@ -48,9 +49,18 @@ class Queue{
   }
 }
 
-let q = new Queue();
-q.enqueue(100);
-q.enqueue(1000);
-console.log(q);
-q.dequeue();
-console.log(q);
+// let q = new Queue();
+// q.enqueue(100);
+// q.enqueue(1000);
+// console.log(q);
+// q.dequeue();
+// console.log(q);
+
+var queue = new Queue();
+queue.enqueue(10) // 1
+queue.size // 1
+queue.enqueue(100) // 2
+queue.size // 2
+queue.enqueue(1000) // 3
+queue.size // 3
+console.log(queue);
