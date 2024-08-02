@@ -23,15 +23,66 @@ class maxBinaryHeap {
     //else stop and break
 
     this.values.push(value);
-    let index = this.values.length - 1;
-    while (index > 0) {
-      let parentIdx = Math.floor((index - 1) / 2);
-      if (this.values[parentIdx] < this.values[index]) {
-        [this.values[parentIdx], this.values[index]] = [this.values[index], this.values[parentIdx]];
-        index = parentIdx;
+    let newIdx = this.values.length - 1;
+    while (newIdx > 0) {
+      let parentIdx = Math.floor((newIdx - 1) / 2);
+      if (this.values[parentIdx] < this.values[newIdx]) {
+        [this.values[parentIdx], this.values[newIdx]] = [this.values[newIdx], this.values[parentIdx]];
+        newIdx = parentIdx;
       } else break;
     }
   }
+
+  //extract the root of a heap, replace it with new root and return the old root
+  extractMax() {
+    //edge case - if there are no nodes, return undefined
+    //if there is only one node, return root
+    //if there are two nodes, return root and make the child as new root
+
+    //get the last child node of the heap and swap it with the root(index 0)
+    //return old root - pop the last node 
+    //sink down or percolate down the new root vlaue to get the right root value to the top   
+    //get the left child and right child of new root
+    //find the greater among the children, if that node is greater than the root and swap it with new root
+    //loop until both child nodes are smaller than root,
+    // if both are smaller than root, return/break
+
+    if (this.values.length === 0) return undefined;
+
+    let lastIdx = this.values.length - 1; 
+    [this.values[lastIdx], this.values[0]] = [this.values[0], this.values[lastIdx]];
+  
+    let poppedNode = this.values.pop();
+    this.sinkDown();
+    console.log("current heap", this.values);
+    return poppedNode;
+  }
+  sinkDown() {
+    let currentIdx = 0, heapLength = this.values.length;
+    while (currentIdx < heapLength) {
+ 
+      if (this.values.length === 2) {
+         //if there is only left node, no right node exists
+          //compare root and left child
+        let leftIdx=currentIdx+1;
+       if(this.values[leftIdx] > this.values[currentIdx]) 
+          [this.values[leftIdx], this.values[currentIdx]]= [this.values[currentIdx], this.values[leftIdx]]
+          
+       break;
+      }
+
+      let leftIdx = (2 * currentIdx) + 1;
+      let rightIdx = (2 * currentIdx) + 2;
+     
+      if (leftIdx > heapLength || rightIdx>heapLength) break;
+     
+      let maxIdx = this.values[leftIdx] > this.values[rightIdx] ? leftIdx : rightIdx;
+      [this.values[currentIdx], this.values[maxIdx]] = [this.values[maxIdx], this.values[currentIdx]];
+
+      currentIdx = maxIdx;
+    }
+  }
+
 }
 
 let heap = new maxBinaryHeap();
@@ -43,3 +94,16 @@ heap.insert(45);
 heap.insert(4);
 heap.insert(25);
 console.log(heap);
+console.log(heap.values.length);
+
+console.log("extracted Node", heap.extractMax());
+console.log("extracted Node", heap.extractMax());
+console.log("extracted Node", heap.extractMax());
+console.log("extracted Node", heap.extractMax());
+console.log("extracted Node", heap.extractMax());
+console.log("extracted Node", heap.extractMax());
+console.log(heap);
+console.log(heap.values.length);
+console.log("extracted Node", heap.extractMax());
+console.log(heap);
+console.log(heap.values.length);
