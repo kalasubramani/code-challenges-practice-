@@ -13,7 +13,7 @@ class maxBinaryHeap {
   }
 
   //insert a value into maxBinaryHeap and bubbleup the value to the right node in the heap
-  insert(value) {
+  enqueue(value) {
     //add new value to the end of the array
     //bubble up the value to right spot
     //repeat until the root node
@@ -34,7 +34,7 @@ class maxBinaryHeap {
   }
 
   //extract the root of a heap, replace it with new root and return the old root
-  extractMax() {
+  dequeue() {
     //edge case - if there are no nodes, return undefined
     //if there is only one node, return root
     //if there are two nodes, return root and make the child as new root
@@ -54,27 +54,25 @@ class maxBinaryHeap {
   
     let poppedNode = this.values.pop();
     this.sinkDown();
-    console.log("current heap", this.values);
+    // console.log("current heap", this.values);
     return poppedNode;
   }
   sinkDown() {
     let currentIdx = 0, heapLength = this.values.length;
     while (currentIdx < heapLength) {
- 
-      if (this.values.length === 2) {
-         //if there is only left node, no right node exists
-          //compare root and left child
-        let leftIdx=currentIdx+1;
+       let leftIdx = (2 * currentIdx) + 1;
+      let rightIdx = (2 * currentIdx) + 2;
+     
+      if (leftIdx > heapLength) break;
+      if (rightIdx >= heapLength) {
+        //if there is only left node, no right node exists
+        //     //compare root and left child
+           let leftIdx=currentIdx+1;
        if(this.values[leftIdx] > this.values[currentIdx]) 
           [this.values[leftIdx], this.values[currentIdx]]= [this.values[currentIdx], this.values[leftIdx]]
           
        break;
       }
-
-      let leftIdx = (2 * currentIdx) + 1;
-      let rightIdx = (2 * currentIdx) + 2;
-     
-      if (leftIdx > heapLength || rightIdx>heapLength) break;
      
       let maxIdx = this.values[leftIdx] > this.values[rightIdx] ? leftIdx : rightIdx;
       [this.values[currentIdx], this.values[maxIdx]] = [this.values[maxIdx], this.values[currentIdx]];
@@ -85,25 +83,25 @@ class maxBinaryHeap {
 
 }
 
-let heap = new maxBinaryHeap();
-heap.insert(10);
-heap.insert(20);
-heap.insert(30);
-heap.insert(40);
-heap.insert(45);
-heap.insert(4);
-heap.insert(25);
-console.log(heap);
-console.log(heap.values.length);
+let ER_queue = new maxBinaryHeap();
+ER_queue.enqueue(10);
+ER_queue.enqueue(20);
+ER_queue.enqueue(30);
+ER_queue.enqueue(40);
+ER_queue.enqueue(45);
+ER_queue.enqueue(4);
+ER_queue.enqueue(25);
+console.log(ER_queue);
+console.log(ER_queue.values.length);
 
-console.log("extracted Node", heap.extractMax());
-console.log("extracted Node", heap.extractMax());
-console.log("extracted Node", heap.extractMax());
-console.log("extracted Node", heap.extractMax());
-console.log("extracted Node", heap.extractMax());
-console.log("extracted Node", heap.extractMax());
-console.log(heap);
-console.log(heap.values.length);
-console.log("extracted Node", heap.extractMax());
-console.log(heap);
-console.log(heap.values.length);
+console.log("extracted Node", ER_queue.dequeue());
+console.log("extracted Node", ER_queue.dequeue());
+console.log("extracted Node", ER_queue.dequeue());
+console.log("extracted Node", ER_queue.dequeue());
+console.log("extracted Node", ER_queue.dequeue());
+console.log("extracted Node", ER_queue.dequeue());
+console.log(ER_queue);
+console.log(ER_queue.values.length);
+console.log("extracted Node", ER_queue.dequeue());
+console.log(ER_queue);
+console.log(ER_queue.values.length);
