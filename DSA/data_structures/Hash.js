@@ -1,4 +1,4 @@
-
+//simple function to hash strings
 function hash(key,arrayLen){
  let total =0;
  for(char of key){
