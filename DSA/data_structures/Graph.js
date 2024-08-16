@@ -52,31 +52,62 @@ class Graph {
 
   //GRAPH TRAVERSAL
   //depth first traversal - recursive
-  DFTRecursive(vtx){
+  DFTRecursive(vtx) {
     //create array to store result and return it at the end
     //create an obj to store visited vtx
-      //helper function(vtx) - to recurse for traversing depth first
-          //check if vtx is empty, return
-          //add vtx to visited obj and also push it to result array
-          //loop thru each vertices in the adj list of that vtx
-            //if any of the vertex in adh list is not visited, then invoke helper fn with that vtx as param
+    //helper function(vtx) - to recurse for traversing depth first
+    //check if vtx is empty, return
+    //add vtx to visited obj and also push it to result array
+    //loop thru each vertices in the adj list of that vtx
+    //if any of the vertex in adh list is not visited, then invoke helper fn with that vtx as param
     //call helper fn(starting vertex)
 
-    let results=[], visited={}, adjList = this.adjacencyList;;
+    let results = [], visited = {}, adjList = this.adjacencyList;
 
-    function traverseDepthFirst(vtx){
-        if(!vtx) return null;
-        visited[vtx] = true;
-        results.push(vtx);
-        // console.log(adjList[vtx], "results",results);
-        adjList[vtx].forEach(v=> { 
-          if( !visited[v]) return traverseDepthFirst(v);          
-        });        
+    function traverseDepthFirst(vtx) {
+      if (!vtx) return null;
+      visited[vtx] = true;
+      results.push(vtx);
+      // console.log(adjList[vtx], "results",results);
+      adjList[vtx].forEach(v => {
+        if (!visited[v]) return traverseDepthFirst(v);
+      });
     }
 
     traverseDepthFirst(vtx);
 
     return results;
+  }
+
+  //traverse the graph in breadth first order
+  BFT(vtx) {
+    //create an array Q and push the vtx
+    //create obj for storing visited vertices    
+    // mark vtx as visited
+    //add vtx to result
+    //loop as long as Q has elements
+    //pop first value from Q and push it to result
+    //for each value in adj list for that CurrVtx
+    //check if CurrVtx in adj list is in visited
+    //if not add to visited
+    //add to Q
+    //rturn visited nodes
+
+    let q = [vtx], visited = {}, adjList = this.adjacencyList, result = [], currentVtx;
+    visited[vtx]=true;
+
+    while (q.length) {
+      currentVtx = q.shift();
+      result.push(currentVtx);
+
+      adjList[currentVtx].forEach((v) => {
+        if (!visited[v]) {
+          visited[v] = true;
+          q.push(v);
+        }
+      });
+    }
+    return result;
   }
 }
 
@@ -94,15 +125,15 @@ g.addEdge("B", "D");
 g.addEdge("C", "E");
 g.addEdge("D", "E");
 g.addEdge("D", "F");
-g.addEdge("E", "F"); 
+g.addEdge("E", "F");
 //GRAPH STRUCTURE
-        //    A
-        //  /   \
-        // B     C
-        // |      |
-        // D ---- E
-        //   \   /
-        //     F
+//    A
+//  /   \
+// B     C
+// |      |
+// D ---- E
+//   \   /
+//     F
 
 // console.log(g);
 // g.removeEdge("Nagasaki", "Tokyo");
@@ -110,4 +141,6 @@ g.addEdge("E", "F");
 // g.removeVertex("Tokyo");
 // console.log(g);
 let traversedOrder = g.DFTRecursive("A");
-console.log(traversedOrder);
+console.log("DFTRecursive", traversedOrder);
+
+console.log("BFT", g.BFT("A"));
