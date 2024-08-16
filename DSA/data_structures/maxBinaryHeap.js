@@ -12,7 +12,7 @@ class maxBinaryHeap {
     this.values = [];
   }
 
-  //insert a value into maxBinaryHeap and bubbleup the value to the right node in the heap
+  //insert a node into maxBinaryHeap and bubbleup the value to the right node in the heap
   enqueue(value) {
     //add new value to the end of the array
     //bubble up the value to right spot

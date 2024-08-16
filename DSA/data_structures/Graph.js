@@ -49,20 +49,65 @@ class Graph {
       delete this.adjacencyList[vtx]; //delete will delete the object property, but will not reindex the array or update its length. makes its value "undefined"
     }
   }
+
+  //GRAPH TRAVERSAL
+  //depth first traversal - recursive
+  DFTRecursive(vtx){
+    //create array to store result and return it at the end
+    //create an obj to store visited vtx
+      //helper function(vtx) - to recurse for traversing depth first
+          //check if vtx is empty, return
+          //add vtx to visited obj and also push it to result array
+          //loop thru each vertices in the adj list of that vtx
+            //if any of the vertex in adh list is not visited, then invoke helper fn with that vtx as param
+    //call helper fn(starting vertex)
+
+    let results=[], visited={}, adjList = this.adjacencyList;;
+
+    function traverseDepthFirst(vtx){
+        if(!vtx) return null;
+        visited[vtx] = true;
+        results.push(vtx);
+        // console.log(adjList[vtx], "results",results);
+        adjList[vtx].forEach(v=> { 
+          if( !visited[v]) return traverseDepthFirst(v);          
+        });        
+    }
+
+    traverseDepthFirst(vtx);
+
+    return results;
+  }
 }
 
 let g = new Graph();
-g.addVertex("Tokyo");
-g.addVertex("Nagasaki");
-g.addVertex("Hiroshima");
-g.addVertex("Frankfurt");
-console.log(g);
-g.addEdge("Nagasaki", "Tokyo");
-g.addEdge("Tokyo", "Hiroshima");
-g.addEdge("Tokyo", "Frankfurt");
-g.addEdge("Nagasaki", "Frankfurt");
-console.log(g);
-g.removeEdge("Nagasaki", "Tokyo");
-console.log(g);
-g.removeVertex("Tokyo");
-console.log(g);
+g.addVertex("A");
+g.addVertex("B");
+g.addVertex("C");
+g.addVertex("D");
+g.addVertex("E");
+g.addVertex("F");
+// console.log(g);
+g.addEdge("A", "B");
+g.addEdge("A", "C");
+g.addEdge("B", "D");
+g.addEdge("C", "E");
+g.addEdge("D", "E");
+g.addEdge("D", "F");
+g.addEdge("E", "F"); 
+//GRAPH STRUCTURE
+        //    A
+        //  /   \
+        // B     C
+        // |      |
+        // D ---- E
+        //   \   /
+        //     F
+
+// console.log(g);
+// g.removeEdge("Nagasaki", "Tokyo");
+// console.log(g);
+// g.removeVertex("Tokyo");
+// console.log(g);
+let traversedOrder = g.DFTRecursive("A");
+console.log(traversedOrder);
