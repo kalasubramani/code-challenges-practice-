@@ -11,40 +11,42 @@ function countZeros(arr) {
   //use divide and conquer approach
   //if array.length =0, return "Invalid input"
   //check if array[0] == 0, then return countofzeros = array.length
-  //take the array and divide into half
-  //check if mid point has value ==0
-  // if the values in prev position (mid pt-1) is 1, 
-  //then get the index of first zero after 1
-  // countofZeros = length - index of zero
-  //if yes, take left half of the array and repeat the check
-  //new right = mid pt -1, left = start pos
-  //if no, then move to right half
-  //new left = mid pt +1, right = end
-  //repeat the check
+  // loop till left <= right
+    //take the array and divide into half
+    //check if mid point has value ==0
+        //set posofFirstZero to midpt
+        //if there is another 0 before this index, update posofFirstZero to that index
+      //take new right = midpt -1 and repeat the check
+    //else new right = mid pt +1
+ 
+    //if a zero is found, return arr.length - posFirstZero
+    // else return 0
 
   //return countofzeros
-
+  console.log("input", arr);
   if (!arr.length) return "Invalid input.";
+
+  let midpt, posOfFirst0, left = 0, right = arr.length - 1, countOfZeros = 0;
   //check if arr contains all 0s
   if (arr[0] === 0) return arr.length;
 
-  let midpt = Math.floor(arr.length / 2), posOfLast1, left = 0, right = arr.length - 1;
-  // console.log("midpt",midpt,"posOfLast1",posOfLast1);
-  while (left < right) {
+  while (left <= right) {
+    midpt = Math.floor((left + right) / 2);
     if (arr[midpt] === 0) {
-       arr[midpt-1] ===1 ? posOfLast1 = midpt-1 :  right = midpt - 1;
-    } else {
-      arr[midpt+1] ===0 ? posOfLast1=midpt : left = midpt + 1;
+      if (posOfFirst0 === undefined) posOfFirst0 = midpt;
+      else posOfFirst0 = midpt < posOfFirst0 ? midpt : posOfFirst0;
+
+      right = midpt - 1;
     }
-    // console.log("aa",posOfLast1);
-    if(posOfLast1) break;
+    else {
+      left = midpt + 1;
+    }
   }
-
- console.log("result",arr.length -(posOfLast1+1)) ;
-
+  if (posOfFirst0) countOfZeros = arr.length - posOfFirst0;
+  return countOfZeros;
 }
 
-countZeros([1, 1, 1, 1, 0, 0]) // 2
-countZeros([1,0,0,0,0]) // 4
-countZeros([0,0,0]) // 3
-countZeros([1,1,1,1]) // 0
+console.log(countZeros([1, 1, 1, 1, 0, 0]))// 2
+console.log(countZeros([1, 0, 0, 0, 0]))// 4
+console.log(countZeros([0, 0, 0])) // 3
+console.log(countZeros([1, 1, 1, 1]))// 0
