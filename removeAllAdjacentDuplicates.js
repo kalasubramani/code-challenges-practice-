@@ -50,7 +50,7 @@ function removeAllAdjacentDuplicates(input, K) {
         break;
       }
     }
-  //exit for input is less than K chars or if input does not have duplicates
+  //exit for input is less than K chars or if input does not have duplicates(ip remains unchanged)
    if(input.length<=K || input.length=== originalLength )
      break;
   }
