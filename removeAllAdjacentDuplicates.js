@@ -39,19 +39,23 @@ function removeAllAdjacentDuplicates(input, K) {
   if (!(input.length >= 1 && input.length <= 105)) return "Invalid input - input length";
   if (!(K >= 2 && K <= 104)) return "Invalid input-K";
   if ((/[A-Z]/.test(input))) return "Invalid input-AZ";
-  let originalLength=input.length;
+  let originalLength=input.length,flag=false;
 
   while (true) {
-    for (let i = 0; input.length >=K && i + (K - 1) < input.length; i++) {
+    for (let i = 0; input.length >=K && i+K < input.length; i++) {
+      console.log("i",i, i + K <input.length)
       let Kchars = input.substring(i, i + K);
       if (areAllCharsSame(Kchars)) {
         let leftPart = input.substring(0, i), rightPart = input.substring(i + K);
         input = leftPart.concat(rightPart);
+        console.log("updated ip",input)
+        flag=true;
         break;
       }
+      // if (flag===false) break;
     }
   //exit for input is less than K chars or if input does not have duplicates(ip remains unchanged)
-   if(input.length<=K || input.length=== originalLength )
+   if(input.length<=K || input.length=== originalLength || flag===false )
      break;
   }
 
@@ -76,3 +80,4 @@ function areAllCharsSame(str) {
 console.log(removeAllAdjacentDuplicates("abcd", 2));//abcd
 console.log(removeAllAdjacentDuplicates("deeedbbcccbdaa", 3));//aa
 console.log(removeAllAdjacentDuplicates("pbbcggttciiippooaais", 2));//ps
+console.log(removeAllAdjacentDuplicates("abcdeex", 2));//abcd
