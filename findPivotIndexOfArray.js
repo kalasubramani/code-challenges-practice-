@@ -67,6 +67,8 @@ return -1;
 function findSum(startIdx,endIdx,arr){
   let idx=startIdx,sum=0;
   while(idx<=endIdx){
+     //check id arr[i] falls within the accepted range
+     if(!(arr[idx]>=-1000 && arr[idx]<=1000)) return;
       sum +=arr[idx];
       idx++;
   }
