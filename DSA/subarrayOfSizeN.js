@@ -4,7 +4,8 @@ function chunks(arr,n){
   let idx=0;
 while(idx<arr.length){
   result.push(arr.slice(idx,idx+n));
-  idx = idx+n;
+  // idx = idx+n;
+  idx++;
 }
  return result;
 }
