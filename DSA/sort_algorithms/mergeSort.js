@@ -53,4 +53,4 @@ function mergeArrays(arr1,arr2){
   return results;
   }
 
-console.log(mergeSort([12,67,34,121,21,3,18,5,20]))
+console.log(mergeSort([12,67,34,121,21,3,18,5,20,1,200]))
