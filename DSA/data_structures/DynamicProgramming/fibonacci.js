@@ -30,11 +30,25 @@ function tabulationFib(n){
 
   var fibResults=[0,1,1];//initialize it with default values till n=2
   for(let i=3;i<=n;i++)
-    fibResults[i]= tabulationFib(i-1) + tabulationFib(i-2);
+    fibResults[i]= fibResults[i-1] + fibResults[i-2];
 
   return fibResults[n];//return nth value stored
 }
 
-console.log("Memoized Fib",memoFib(45));
-// console.log("tabulized Fib",tabulationFib(4));
-console.log("plain recursive fib",fibonacci(45));
+console.log("Calculating Fibonacci value for fib(45) ...")
+
+
+let t1=performance.now();
+console.log("Recursive approach Fib(45)",fibonacci(45));
+let t2=performance.now();
+console.log("Time taken in seconds:",((t2-t1)/1000).toFixed(5));
+
+let t3=performance.now();
+console.log("Memoized approach Fib(45)",memoFib(45));
+let t4=performance.now();
+console.log("Time taken in seconds:",((t4-t3)/1000).toFixed(5))
+
+let t5=performance.now();
+console.log("Tabulized approach Fib(45)",tabulationFib(45));
+let t6=performance.now();
+console.log("Time taken in seconds:",((t6-t5)/1000).toFixed(5));
