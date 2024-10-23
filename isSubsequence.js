@@ -25,13 +25,12 @@ function isSubsequence(str1,str2){
 let i=0,j=0;
 if(!str1) return true;
 if(!str2) return false;
-
 //'abc', 'abracadabra'
-while(j<str2.length && i <=str1.length){
+while(j<str2.length && i <=str1.length){ 
   if(str1[i]===str2[j]){
-    i++;
+    let temp = str2.slice(j,j+str1.length);
+    if(str1===temp) return true;
   }
-  if(i===str1.length) return true;  
   j++;
 }
 return false;
@@ -39,4 +38,4 @@ return false;
 
 console.log(isSubsequence('hello', 'hello world'));
 console.log(isSubsequence('abc', 'acb'));
-console.group( isSubsequence('abc', 'abracadabra'));
+console.group( isSubsequence('abc', 'abraabccadabra'));

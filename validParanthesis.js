@@ -28,19 +28,27 @@
 
 function validParanthesis(input) {
   const stack = [];
-  const characters = { ')': '(', '}': '{', ']': '[' };
-  for (const char of input) {
+  const paranthesis = { ')': '(',
+                       '}': '{', 
+                       ']': '[' };
 
-    if (!characters[char]) {
+  for (const char of input) {
+    console.log("char",char,paranthesis[char])
+    //adds on all open paranthesis in stack
+    if (!paranthesis[char]) {
+      console.log("if")
       stack.push(char);
     }
-    else if (stack.pop() !== characters[char]) {
+    else if (stack.pop() !== paranthesis[char]) {
+      //checks if a open paranthesis in stack got a matching close paranthesis from input
+      console.log("else")
       return false;
     }
+    console.log(stack,char);
   }
   return stack.length === 0;
 }
 
 console.log(validParanthesis("()")); 
 console.log(validParanthesis("(]"));
-console.log(validParanthesis("(])["));
+console.log(validParanthesis("(])()["));
