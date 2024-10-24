@@ -5,6 +5,8 @@
 // Output Format: Return a list of prime numbers.
 // Sample Test Cases: in: 10 out: [2, 3, 5, 7]
 // in: 20 out: [2, 3, 5, 7, 11, 13, 17, 19]
+// Bonus Challenge
+// Task: Modify the function to return the sum of all prime numbers up to n.
 
 function printPrimesInRange(range){
   //if range is not between 2 to 1000 throw error
