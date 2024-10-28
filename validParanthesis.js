@@ -49,6 +49,6 @@ function validParanthesis(input) {
   return stack.length === 0;
 }
 
-console.log(validParanthesis("()")); 
-console.log(validParanthesis("(]"));
-console.log(validParanthesis("(])()["));
+console.log(validParanthesis("()")); //true
+console.log(validParanthesis("(]"));//false
+console.log(validParanthesis("(])()["));//false
