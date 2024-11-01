@@ -6,8 +6,8 @@ function checkTwoArraysHaveSameElements(){
 }
 
 const arr1=[3,4,5], arr2=[3,4,5], arr3=arr1;;
-
+const arr4=[4,5,3]
 
 console.log("checkTwoArraysHaveSameElements ", checkTwoArraysHaveSameElements(arr1,arr2))
 console.log("checkTwoArraysHaveSameElements same ref ", checkTwoArraysHaveSameElements(arr1,arr3))
-
+console.log("checkTwoArraysHaveSameElements ", checkTwoArraysHaveSameElements(arr1,arr4))
