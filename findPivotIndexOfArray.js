@@ -79,3 +79,57 @@ function findSum(startIdx,endIdx,arr){
 console.log(findPivotIndexOfArray([2,1,-1]));//0
 console.log(findPivotIndexOfArray([1,2,3]));//-1
 console.log(findPivotIndexOfArray([1,7,3,6,5,6]));//3
+
+
+// Given an array arr of non-negative numbers. The task is to find the 
+// first equilibrium point in an array. The equilibrium point in an 
+// array is an index (or position) such that the sum of all elements 
+// before that index is the same as the sum of elements after it.
+// Note: Return equilibrium point in 1-based indexing. Return -1 if no such point exists. 
+function slidingWinPattern(arr) {
+  // code here
+  //check if arr length is in range of 1 to 10^6, else throw error
+  //check if arr[i] is in range of 0 to 10^9, else throw error
+  //if len ===1, return the ele
+  //use sliding window pattern
+  // leftsum = arr[0], rightsum = sum(1,length-1)
+  //iterate thru each ele in arr
+    //leftsum = leftsum + arr[i]
+    //rightsum = rightsum - arr[i]
+    //if leftsum ===rightsum
+      //   return idx+1
+  //return -1
+  let length = arr.length;
+  
+  if(!(length >=1 && length<=Math.pow(10,6))) throw new Error("Length out of bounds")
+  if(length===1) return arr[0];
+  
+   let leftsum, rightsum;
+  for(let i=0;i<length-1;i++){
+      if( i===0){
+           leftsum=  0;
+           rightsum=findsum(1,length-1,arr);
+      }else {
+           leftsum += arr[i-1];
+           rightsum -=arr[i];
+      }    
+      // console.log(leftsum,rightsum,arr[i]);
+      if(leftsum ===rightsum) return i+1;
+  }  
+  return -1;
+}
+
+function findsum(start,end,arr){
+  let sum=0,i=start;
+  let leng=arr.length-1;
+  while(i<=end){
+      sum +=arr[i];
+      i++;
+      // console.log("sum",sum,i)
+  }
+  return sum;
+}
+console.log("--sliding win pattern (1 based indx)--")
+console.log(slidingWinPattern([2,1,-1]));//0
+console.log(slidingWinPattern([1,2,3]));//-1
+  console.log(slidingWinPattern([1,7,3,6,5,6]));//3
