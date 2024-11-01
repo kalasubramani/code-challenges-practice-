@@ -22,6 +22,7 @@ function checkIfArrayEleHasSumOfKMeth2(arr,k){
     if(sum===k){
       console.log(`matched ${filteredArr[left]} ${filteredArr[right]}`);
       right--;
+      result=true;
     }else if(sum > k){
       right--;
     }else{
@@ -32,4 +33,5 @@ function checkIfArrayEleHasSumOfKMeth2(arr,k){
   return result;
 }
 // console.log(checkIfArrayEleHasSumOfKMeth2([-2,-3,0,4,5,2,4],3));
-console.log(checkIfArrayEleHasSumOfKMeth2([-2,-3,0,4,5,2,4,23,34,5,4,8,5,3,6,7,1],3));
+console.log(checkIfArrayEleHasSumOfKMeth2([-2,-3,0,4,5,2,4,23,34,5,4,8,5,3,6,7,1],3));//[0,3] [1,2]
+console.log(checkIfArrayEleHasSumOfKMeth2([-2,-3,0,4,5,4,23,34,5,4,8,5,6,7,1],3));//false
