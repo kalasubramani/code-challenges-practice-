@@ -36,6 +36,7 @@ console.log("n:",n);
 return sqrt;
 }
 
-console.log(squareRoot(4));
-console.log(squareRoot(81));
-console.log(squareRoot(90));
+console.log(squareRoot(2));
+// console.log(squareRoot(4));
+// console.log(squareRoot(81));
+// console.log(squareRoot(90));
