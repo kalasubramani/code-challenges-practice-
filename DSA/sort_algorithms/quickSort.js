@@ -20,13 +20,14 @@ function pivotHelper(arr, start = 0, end = arr.length + 1) {
     if (pivot > arr[i]) {
       swapIndex++; //inc no. of ele that is greater than pivot
       //swap the ele to the swapIndex position
+      console.log(arr);
       swap(arr, swapIndex, i);
     }
   }//for
 
   //swap the start ele to swapIndx position
   swap(arr, start, swapIndex);
-  // console.log(arr);
+  console.log(arr);
   return swapIndex;
 }
 
