@@ -12,25 +12,44 @@
 
 
 function vowelCount(str){
+  //check if str length is between 1 to 10^4, else throw error
+  //define regular expression for vowels ignore case
+  //match regex with str to find the matching vowels
+  //find length of matching vowels
+  //return length
+
+  if(!(str.length>=1 && str.length<=Math.pow(10,5))) throw new Error("Input length out of bounds");
   //regEx for English vowels
   const vowelregEx=/[aeiou]/gi;
   const vowels = str.match(vowelregEx);
-  return vowels?.length;
+  return vowels?.length??0;
 }
 
 console.log("---vowelCount---")
 console.log(vowelCount("hello"));//2
 console.log(vowelCount("banana"));//3
 console.log(vowelCount("élève"));//1
+console.log(vowelCount("dryfry"));//0
+// console.log(vowelCount(""));//Error
 
 //bonus challenge
 function vowelCountUnicode(str){ 
+  //check if str length is between 1 to 10^4, else throw error
+  //define regular expression for vowels along with Diacritic - ignore case
+  //match regex with str to find the matching vowels
+  //find length of matching vowels
+  //return length
+
+  if(!(str.length>=1 && str.length<=Math.pow(10,5))) throw new Error("Input length out of bounds");
+  
   //regEx for English and unicode vowels
   const vowelregEx  = /[aeiouáéíóúàèìòùäëïöü]/giu;
   const vowels = str.match(vowelregEx);
-  return vowels?.length;
+  return vowels?.length??0;
 }
 console.log("---vowelCountUnicode---")
 console.log(vowelCountUnicode("hello"));//2
 console.log(vowelCountUnicode("banana"));//3
 console.log(vowelCountUnicode("élève"));//3
+console.log(vowelCount("dryfry"));//0
+// console.log(vowelCount(""));//Error
