@@ -47,4 +47,14 @@ function getAllAnagrams(str,anagramSet,n){
   }
 }
 
+function allSubstring(str){
+  //slice the str from len =2 to len = n-1
+  //pass each substr to allanagrams(substr)
+  //check if result substrings have len >1 && < str length
+  //accumulate the substr from each call in set()
+  //return set
+
+}
 console.log(allAnagrams('cat'));
+console.log(allAnagrams('abcde'));
+
