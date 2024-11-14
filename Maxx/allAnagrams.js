@@ -11,7 +11,8 @@
 //  Constraint: No one letter words
 // Ex. in: cat 
 // out: ['cat', 'cta', 'act', 'atc', 'tac', 'tca', 'ca', 'ct', 'ta', 'tc', 'ac', 'at']
-//ca at ta ac tc
+
+
 function allAnagrams(str) {
   //define a set to hold results - elimates duplicates at insertion
   //iterate thru chars in string
@@ -104,6 +105,8 @@ function getAllSubstrings(str, substrings, n) {
   }
   return substrings;
 }
+
+
 console.log("all anagrams",allAnagrams('cat'));
 // console.log(allAnagrams('abcde'));
 // console.log(allSubstring("abcd"));
