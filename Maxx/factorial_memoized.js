@@ -1,4 +1,13 @@
+// New Challenge Time!
+// Name: Factorials
+// Task: Calculate the factorial of a given number.
+// Constraints: n is between 1 and 12.
+// Output Format: An integer representing the factorial of n.
+// Sample Test Cases: in: 5 out: 120
 
+// Bonus Challenge
+// Calculate the factorial of a given number using recursion with memoization to optimize for large inputs.
+// in: 100000 out: (a large number)
 
 function factorial(n){
     //use recursion
