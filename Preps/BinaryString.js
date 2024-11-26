@@ -32,14 +32,37 @@
 // 1 ≤ |S| ≤ 104
 
 function BinaryString(n,str){
-  //check if n is between 1 and 104 else return error
+  //check if n is between 1 and 10^4 else return error
   //if n==1, return str
-  //iterate through the str
+  //iterate through the str  //01101
     //find first occurence of 1, push i to positions[]
     //if start has value && 1 is encountered
-        //get chars from start to i
-        //add substring to results
         //push i to positions[]
+        //get chars from start to each i pos
+        //add substring to results
+        
     //return length of results    
 
+    if(!(n >=1 && n <=Math.pow(10,5))) return ("Input length out of bounds");
+    if(n===1) return str[0]===1?1:0;
+
+    let positions=[],start,count=0;
+    for(let i=0;i<n;i++){    
+      if(str[i]==='1' && !start){
+        positions.push(i);              
+      }      
+    }
+    console.log(positions)
+    if(positions.length>1){
+      for(let i=0;i<positions.length;i++){ 
+        for(let j=i+1;j<positions.length;j++){ 
+           console.log(str.slice(positions[i],positions[j]+1));
+        count++;
+        }
+      }
+    }
+    return count;
 }
+
+console.log(BinaryString(5,"01101"));//3
+console.log(BinaryString(4,"1111"));//6
