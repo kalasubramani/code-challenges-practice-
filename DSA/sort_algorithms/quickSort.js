@@ -17,11 +17,12 @@ function pivotHelper(arr, start = 0, end = arr.length + 1) {
 
   for (let i = start + 1; i < arr.length; i++) {
     //if ele is less than pivot, inc swapIdx
+    console.log("arr[i]",i,arr[i],pivot)
     if (pivot > arr[i]) {
       swapIndex++; //inc no. of ele that is greater than pivot
-      //swap the ele to the swapIndex position
-      console.log(arr);
+      //swap the ele to the swapIndex position     
       swap(arr, swapIndex, i);
+      console.log(arr);
     }
   }//for
 
